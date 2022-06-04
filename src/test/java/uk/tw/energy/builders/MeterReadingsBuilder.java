@@ -14,6 +14,9 @@ public class MeterReadingsBuilder {
     private String smartMeterId = DEFAULT_METER_ID;
     private List<ElectricityReading> electricityReadings = new ArrayList<>();
 
+    public MeterReadings publicMeterReadings;
+    public MeterReadings publicHttpMeterReadings;
+
     public MeterReadingsBuilder setSmartMeterId(String smartMeterId) {
         this.smartMeterId = smartMeterId;
         return this;
@@ -29,7 +32,18 @@ public class MeterReadingsBuilder {
         return this;
     }
 
-    public MeterReadings build() {
+    public void build() {
+        publicHttpMeterReadings = new MeterReadings(smartMeterId, electricityReadings);
+    }
+
+    public void build(String SmartMeterId, int Number) {
+        setSmartMeterId(SmartMeterId);
+        generateElectricityReadings(Number);
+
+        publicMeterReadings = new MeterReadings(smartMeterId, electricityReadings);
+    }
+
+    public MeterReadings builder() {
         return new MeterReadings(smartMeterId, electricityReadings);
     }
 }
