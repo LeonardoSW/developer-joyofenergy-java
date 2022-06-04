@@ -33,7 +33,7 @@ public class MeterReadingsBuilder {
     }
 
     public void build() {
-        publicHttpMeterReadings = new MeterReadings(smartMeterId, electricityReadings);
+        publicHttpMeterReadings = new MeterReadings(DEFAULT_METER_ID, electricityReadings);
     }
 
     public void build(String SmartMeterId, int Number) {
