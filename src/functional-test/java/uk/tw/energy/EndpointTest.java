@@ -25,7 +25,7 @@ public class EndpointTest extends MeterReadingsBuilder {
 
     @Test
     public void shouldStoreReadings() throws JsonProcessingException {
-        generateElectricityReadings();
+        generateElectricityReadings().build();
         HttpEntity<String> entity = getStringHttpEntity(publicHttpMeterReadings);
 
         ResponseEntity<String> response = restTemplate.postForEntity("/readings/store", entity, String.class);
